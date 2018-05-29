@@ -4,6 +4,7 @@ public class HelloMessage {
 
     private String name;
     private String message;
+    private String ip;
 
     public HelloMessage() {
     }
@@ -24,4 +25,12 @@ public class HelloMessage {
     public void setMessage(String message) {
         this.message = message;
     }
+ 
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 }

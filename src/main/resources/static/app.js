@@ -19,7 +19,7 @@ function connect() {
 		setConnected(true);
 		console.log('Connected: ' + frame);
 		stompClient.subscribe('/topic/greetings', function (greeting) {
-			showGreeting(JSON.parse(greeting.body).content);
+			showGreeting(JSON.parse(greeting.body).content, JSON.parse(greeting.body).me);
 		});
 	});
 }
@@ -33,11 +33,17 @@ function disconnect() {
 }
 
 function sendName() {
-	stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val()}));
+	stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val(), 'ip' : $('#ip').val()}));
 }
 
-function showGreeting(message) {
-	$("#greetings").append("<tr><td>" + message + "</td></tr>");
+function showGreeting(message, me) {
+	var myIP = $('#Myip').val();
+	console.log("My IP : " + myIP);
+	if(me === myIP) {
+		$("#greetings").append("<tr><td><font color='red'>" + message + "</font></td></tr>");		
+	} else {
+		$("#greetings").append("<tr><td><font color='blue'>" + message + "</font></td></tr>");
+	}
 }
 
 $(function () {

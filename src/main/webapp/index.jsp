@@ -28,6 +28,8 @@
                     <input type="text" id="name" class="form-control" placeholder="name...">
                      <label for="msg">Your message:</label>
                     <input type="text" id="msg" class="form-control" placeholder="Message...">
+                    <input type="hidden" id = "ip" value = "${ip}">
+                    <input type="hidden" id = "amI" value = false>
                 </div>
                 <button id="send" class="btn btn-default" type="submit">Send</button>
             </form>
@@ -41,7 +43,7 @@
                 <tbody id="greetings">
                 </tbody>
             </table>
-</div>
+            <input type="hidden" id = "Myip" value = "${ip}">
 </body>
 <meta charset="utf-8">
 </html>
