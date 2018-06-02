@@ -1,4 +1,4 @@
-package demo.myapp;
+package org.webskey.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

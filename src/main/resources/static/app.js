@@ -4,22 +4,22 @@ function setConnected(connected) {
 	$("#connect").prop("disabled", connected);
 	$("#disconnect").prop("disabled", !connected);
 	if (connected) {
-		$("#conversation").show();
+		$("#conversatione").show();
 	}
 	else {
-		$("#conversation").hide();
+		$("#conversatione").hide();
 	}
-	$("#greetings").html("");
+	$("#conversation").html("");
 }
 
 function connect() {
-	var socket = new SockJS('/gs-guide-websocket');
+	var socket = new SockJS('/websocket');
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
 		setConnected(true);
 		console.log('Connected: ' + frame);
-		stompClient.subscribe('/topic/greetings', function (greeting) {
-			showGreeting(JSON.parse(greeting.body).content, JSON.parse(greeting.body).me);
+		stompClient.subscribe('/broker/conversation', function (message) {
+			onMessage(JSON.parse(message.body).name, JSON.parse(message.body).message, JSON.parse(message.body).ip);
 		});
 	});
 }
@@ -32,17 +32,18 @@ function disconnect() {
 	console.log("Disconnected");
 }
 
-function sendName() {
-	stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val(), 'ip' : $('#ip').val()}));
+function sendMessage() {
+	stompClient.send("/receiver/message", {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val(), 'ip' : $('#ip').val()}));
+	$('#msg').val("");
 }
 
-function showGreeting(message, me) {
+function onMessage(name, message, ip) {
 	var myIP = $('#Myip').val();
 	console.log("My IP : " + myIP);
-	if(me === myIP) {
-		$("#greetings").append("<tr><td><font color='red'>" + message + "</font></td></tr>");		
+	if(ip === myIP) {
+		$("#conversation").append("<tr><td><font color='red'>" + name + " : " + message + "</font></td></tr>");		
 	} else {
-		$("#greetings").append("<tr><td><font color='blue'>" + message + "</font></td></tr>");
+		$("#conversation").append("<tr><td><font color='blue'>" + name + " : " + message + "</font></td></tr>");
 	}
 }
 
@@ -52,6 +53,6 @@ $(function () {
 	});
 	$( "#connect" ).click(function() { connect(); });
 	$( "#disconnect" ).click(function() { disconnect(); });
-	$( "#send" ).click(function() { sendName(); });
+	$( "#send" ).click(function() { sendMessage(); });
 });
 

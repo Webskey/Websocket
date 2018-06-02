@@ -1,17 +1,22 @@
-package demo.myapp;
+package org.webskey.websocket.model;
 
-public class HelloMessage {
+public class Message {
 
     private String name;
     private String message;
     private String ip;
 
-    public HelloMessage() {
-    }
+    public Message() { }
 
-    public HelloMessage(String name, String message) {
+    public Message(String name, String message) {
         this.name = name;
         this.message = message;
+    }
+    
+    public Message(String name, String message, String ip) {
+    	this.name = name;
+    	this.message = message;
+    	this.ip = ip;
     }
 
     public String getName() {

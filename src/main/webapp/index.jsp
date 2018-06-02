@@ -25,22 +25,21 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="name">Your name:</label>
-                    <input type="text" id="name" class="form-control" placeholder="name...">
+                    <input type="text" id="name" class="form-control" placeholder="Name...">
                      <label for="msg">Your message:</label>
                     <input type="text" id="msg" class="form-control" placeholder="Message...">
                     <input type="hidden" id = "ip" value = "${ip}">
-                    <input type="hidden" id = "amI" value = false>
                 </div>
                 <button id="send" class="btn btn-default" type="submit">Send</button>
             </form>
 
-            <table id="conversation" class="table table-striped">
+            <table id="conversatione" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Greetings</th>
+                    <th>Conversation</th>
                 </tr>
                 </thead>
-                <tbody id="greetings">
+                <tbody id="conversation">
                 </tbody>
             </table>
             <input type="hidden" id = "Myip" value = "${ip}">
