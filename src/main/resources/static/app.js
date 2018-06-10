@@ -4,12 +4,15 @@ function setConnected(connected) {
 	$("#connect").prop("disabled", connected);
 	$("#disconnect").prop("disabled", !connected);
 	if (connected) {
-		$("#conversatione").show();
+		$("#rest").show();
+		$("#welcome").hide();
 	}
 	else {
-		$("#conversatione").hide();
+		$("#rest").hide();		
+		$("#welcome").show();
 	}
-	$("#conversation").html("");
+	$("#myMsg").html("");
+	$("#otherMsg").html("");
 }
 
 function connect() {
@@ -41,9 +44,9 @@ function onMessage(name, message, ip) {
 	var myIP = $('#Myip').val();
 	console.log("My IP : " + myIP);
 	if(ip === myIP) {
-		$("#conversation").append("<tr><td><font color='red'>" + name + " : " + message + "</font></td></tr>");		
+		$("#myMsg").append("<tr><td><font color='red'>" + message + "</font></td></tr>");		
 	} else {
-		$("#conversation").append("<tr><td><font color='blue'>" + name + " : " + message + "</font></td></tr>");
+		$("#otherMsg").append("<tr><td><font color='blue'>" + name + " : " + message + "</font></td></tr>");
 	}
 }
 
