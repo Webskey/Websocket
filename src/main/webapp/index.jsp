@@ -6,57 +6,13 @@
 <link rel="shortcut icon" type="image/png"
 	href="https://d30y9cdsu7xlg0.cloudfront.net/png/32396-200.png" />
 <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!--   <link href="/main.css" rel="stylesheet"> -->
+<link href="/main.css" rel="stylesheet">
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 <script src="/app.js"></script>
 <meta charset="utf-8">
 </head>
-<style>
-#welcome {
-	position: relative;
-	margin: auto;
-	width: 20%;
-	padding: 5px;
-}
-
-#logo {
-	font-size: 20px;
-	text-align: center;
-}
-
-#connect-btn {
-	position: absolute;
-	right: 0;
-}
-
-#scrollable {
-	height: 70%;
-	overflow-y: auto;
-}
-
-#under-conversation {
-	position: absolute;
-	right: 0;
-}
-
-#myMsg {
-	text-align: right;
-}
-
-#otherMsg {
-	text-align: left;
-}
-
-#rest {
-	display: none;
-	position: relative;
-	margin: auto;
-	width: 20%;
-	padding: 5px;
-}
-</style>
 <body>
 	<noscript>
 		<h2 style="color: #ff0000">Seems your browser doesn't support
@@ -92,7 +48,7 @@
 		</div>
 		<form class="form-inline">
 			<div id="under-conversation">
-				<input autofocus autocomplete="off" type="text" id="msg"
+				<input autocomplete="off" type="text" id="msg"
 					class="form-control" placeholder="Message..."> <input
 					type="hidden" id="ip" value="${ip}">
 				<button id="send" class="btn btn-default" type="submit">Send</button>

@@ -6,6 +6,7 @@ function setConnected(connected) {
 	if (connected) {
 		$("#rest").show();
 		$("#welcome").hide();
+		$("#msg").select();
 	}
 	else {
 		$("#rest").hide();		
@@ -44,11 +45,17 @@ function onMessage(name, message, ip) {
 	var myIP = $('#Myip').val();
 	console.log("My IP : " + myIP);
 	if(ip === myIP) {
-		$("#myMsg").append("<tr><td><font color='red'>" + message + "</font></td></tr>");		
+		$("#myMsg").append("<tr><td>" + message + "</td></tr>");		
 	} else {
 		$("#otherMsg").append("<tr><td><font color='blue'>" + name + " : " + message + "</font></td></tr>");
 	}
+	scrollToBottom('scrollable');
 }
+
+function scrollToBottom(id){
+	   var div = document.getElementById(id);
+	   div.scrollTop = div.scrollHeight - div.clientHeight;
+	}
 
 $(function () {
 	$("form").on('submit', function (e) {
@@ -58,4 +65,3 @@ $(function () {
 	$( "#disconnect" ).click(function() { disconnect(); });
 	$( "#send" ).click(function() { sendMessage(); });
 });
-
