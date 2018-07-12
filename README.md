@@ -1,11 +1,18 @@
-# Websocket
-## Chat application.
+# WebSocket Chat
+## Online chat application.
 
-### Built with:
-* SpringBoot
-* Websocket
-* JQuery
-* Jsp
-* Jackson
-* Maven
-* Eclipse
+### Back-end:
+* Java 8
+* Spring Boot 2.0.2
+* Spring WebSocket
+* Lombok 
+
+#### Front-end:
+* JavaScript
+* jQuery
+* SockJS
+* Stomp Websocket
+* HTML
+* CSS
+* JSP
+* Bootstrap

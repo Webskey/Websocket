@@ -11,24 +11,15 @@
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 <script src="/app.js"></script>
-<meta charset="utf-8">
 </head>
 <body>
-	<noscript>
-		<h2 style="color: #ff0000">Seems your browser doesn't support
-			Javascript! Websocket relies on Javascript being enabled. Please
-			enable Javascript and reload this page!</h2>
-	</noscript>
-
 	<div id="welcome">
-		<form>
+		<form id='connect'>
 			<p id="logo">WebSocket Chat</p>
 			<input type="text" autocomplete="off" id="name" class="form-control"
-				placeholder="Your name...">
-			<div id="connect-btn">
-				<button id="connect" class="btn btn-default" type="submit">
-					Connect</button>
-			</div>
+				required placeholder="Your name...">
+			<button id="connect-btn" class="btn btn-default" type="submit">
+				Connect</button>
 		</form>
 	</div>
 
@@ -40,25 +31,19 @@
 						<th>Conversation</th>
 					</tr>
 				</thead>
-				<tbody id="myMsg">
-				</tbody>
-				<tbody id="otherMsg">
+				<tbody id="messages">
 				</tbody>
 			</table>
 		</div>
 		<form class="form-inline">
 			<div id="under-conversation">
-				<input autocomplete="off" type="text" id="msg"
-					class="form-control" placeholder="Message..."> <input
-					type="hidden" id="ip" value="${ip}">
+				<input autocomplete="off" type="text" id="msg" class="form-control"
+					placeholder="Message...">
 				<button id="send" class="btn btn-default" type="submit">Send</button>
 				<button id="disconnect" class="btn btn-default" type="submit"
 					disabled="disabled">Disconnect</button>
 			</div>
 		</form>
-
-		<input type="hidden" id="Myip" value="${ip}">
 	</div>
 </body>
-<meta charset="utf-8">
 </html>

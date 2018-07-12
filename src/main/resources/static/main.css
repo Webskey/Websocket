@@ -6,16 +6,18 @@
 }
 
 #logo {
-	font-size: 20px;
+	font-size: 2vw;
 	text-align: center;
 }
 
 #connect-btn {
-	position: absolute;
-	right: 0;
+	position: relative;
+	float: right;
+	top: 5px;
+	float: right;
 }
 
-#scrollable {	
+#scrollable {
 	height: 400px;
 	overflow-y: auto;
 }
