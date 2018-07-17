@@ -87,3 +87,14 @@ $(function () {
 	$( "#disconnect" ).click(function() { disconnect(); });
 	$( "#send" ).click(function() { sendMessage(); });
 });
+
+$( document ).ready(function() {
+	var paramName = $('#paramName').val();
+	if(paramName != ""){
+		$('#name').val(paramName);
+		connect();
+		$("#rest").css("width", "100%");
+		$("#scrollable").css("max-height", "150px");
+		$("#rest").css("max-height", "200px");
+	}
+});

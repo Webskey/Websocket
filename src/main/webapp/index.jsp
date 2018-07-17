@@ -13,6 +13,8 @@
 <script src="/app.js"></script>
 </head>
 <body>
+	<input type="hidden" id="paramName" value="${name}">
+	
 	<div id="welcome">
 		<form id='connect'>
 			<p id="logo">WebSocket Chat</p>
