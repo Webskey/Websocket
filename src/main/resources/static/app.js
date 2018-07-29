@@ -1,4 +1,5 @@
 var stompClient = null;
+var paramRoomNum;
 
 function setConnected(connected) {
 	$("#connect").prop("disabled", connected);
@@ -20,9 +21,8 @@ function connect() {
 	var socket = new SockJS('/websocket');
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
-		setConnected(true);
-		console.log('Connected: ' + frame);
-		stompClient.subscribe('/broker/conversation', function (message) {
+		setConnected(true);	
+		stompClient.subscribe('/broker/conversation/' + paramRoomNum, function (message) {
 			onMessage(JSON.parse(message.body).name, JSON.parse(message.body).message);
 		});
 	});
@@ -38,7 +38,7 @@ function disconnect() {
 
 function sendMessage() {
 	if($('#msg').val().length > 0)
-		stompClient.send("/receiver/message", {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val()}));
+		stompClient.send("/receiver/message/" + paramRoomNum, {}, JSON.stringify({'name': $("#name").val(), 'message': $('#msg').val()}));
 	$('#msg').val("");
 }
 
@@ -89,6 +89,7 @@ $(function () {
 });
 
 $( document ).ready(function() {
+	paramRoomNum = $('#paramRoomNum').val();
 	var paramName = $('#paramName').val();
 	if(paramName != ""){
 		$('#name').val(paramName);

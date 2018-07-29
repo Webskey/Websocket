@@ -14,7 +14,8 @@
 </head>
 <body>
 	<input type="hidden" id="paramName" value="${name}">
-	
+	<input type="hidden" id="paramRoomNum" value="${roomNum}">
+
 	<div id="welcome">
 		<form id='connect'>
 			<p id="logo">WebSocket Chat</p>

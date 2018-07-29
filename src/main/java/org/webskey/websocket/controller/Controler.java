@@ -12,15 +12,27 @@ import org.webskey.websocket.model.Message;
 public class Controler {
 
 	@RequestMapping("/")
-	public String index(@RequestParam(value = "name", required = false) String name, ModelMap model) {  
+	public String index(@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "room", required = false) Integer roomNum, ModelMap model) { 
+
 		if(name != null) 
 			model.addAttribute("name", name);
+
+		if(roomNum != null) 
+			model.addAttribute("roomNum", roomNum);
+
 		return "index";
 	}
 
-	@MessageMapping("/message")
-	@SendTo("/broker/conversation")
+	@MessageMapping("/message/{num}")
+	@SendTo("/broker/conversation/{num}")
 	public Message messaging(Message message) throws Exception {	
+		return message;
+	}
+
+	@MessageMapping("/message/")
+	@SendTo("/broker/conversation/")
+	public Message messagin(Message message) throws Exception {	
 		return message;
 	}
 }
